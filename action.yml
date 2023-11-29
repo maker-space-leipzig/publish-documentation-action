@@ -30,3 +30,6 @@ runs:
     - name: Build documentation
       run: mkdocs gh-deploy --force --no-history --config-file base/mkdocs.yml
       shell: bash
+    - run: ls -alR
+      shell: bash
+      if: failure()
