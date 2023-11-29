@@ -28,7 +28,8 @@ runs:
     - run: ls -alR
       shell: bash
     - name: Build documentation
-      run: mkdocs gh-deploy --force --no-history --config-file base/mkdocs.yml
+      run: mkdocs gh-deploy --force --no-history --config-file mkdocs.yml
+      working-directory: base
       shell: bash
     - run: pwd && ls -alR
       shell: bash
