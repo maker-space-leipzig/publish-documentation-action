@@ -25,6 +25,8 @@ runs:
           mkdocs-material-
     - run: pip install mkdocs-material mdx_truly_sane_lists
       shell: bash
+    - run: ls -alR
+      shell: bash
     - name: Build documentation
-      run: mkdocs gh-deploy --force --config-file base/mkdocs.yml
+      run: mkdocs gh-deploy --force --no-history --config-file base/mkdocs.yml
       shell: bash
