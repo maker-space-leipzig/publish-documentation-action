@@ -31,6 +31,6 @@ runs:
       run: mkdocs gh-deploy --force --no-history --config-file mkdocs.yml
       working-directory: base
       shell: bash
-    - run: pwd && ls -alR
+    - run: pwd && ls -alR && cd base && git remote -v
       shell: bash
       if: failure()
