@@ -7,7 +7,7 @@ runs:
       uses: actions/checkout@v4
       with:
         path: base
-        token: ${{ secrets.TOKEN }}
+        token: ${{ TOKEN }}
     - name: Checkout wiki
       uses: actions/checkout@v4
       with:
