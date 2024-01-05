@@ -6,6 +6,8 @@ runs:
     - name: Checkout main repo
       uses: actions/checkout@v4
       with:
+        gitAuthorName: ${{ env.GIT_AUTHOR_NAME }}
+        gitAuthorEmail: ${{ env.GIT_AUTHOR_EMAIL }}
         path: base
         token: ${{ inputs.token }}
     - name: Checkout wiki
@@ -28,10 +30,17 @@ runs:
       shell: bash
     - run: ls -alR
       shell: bash
+    - name: Prepare pages build
+      run: git checkout -b gh-pages
+      working-directory: base
     - name: Build documentation
-      run: mkdocs gh-deploy --force --no-history --config-file mkdocs.yml
+      run: mkdocs build --config-file mkdocs.yml
       working-directory: base
       shell: bash
+    - name: Commit pages build
+      run: git add . && git commit -a -m "Wiki update" && git push -f
+      shell: bash
+      working-directory: base
     - run: pwd && ls -alR && cd base && git remote -v
       shell: bash
       if: failure()
